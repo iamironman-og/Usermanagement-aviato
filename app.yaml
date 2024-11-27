@@ -1,10 +1,2 @@
 runtime: python311
-
-handlers:
-- url: /.*
-  script: auto
-
-env_variables:
-  ENVIRONMENT: "production"
-  DATABASE_URL: "test"
-  
+entrypoint: gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
